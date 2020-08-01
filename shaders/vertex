@@ -1,0 +1,14 @@
+#version 130
+in vec3 position;
+in vec2 vertexUV;
+// pass to frag shader
+out vec2 UV;
+uniform float scale;
+uniform mat4 view;
+uniform mat4 perspective;
+uniform mat4 transform;
+void main() {
+    gl_Position = perspective * view * transform * vec4(scale*position,1);
+    // pass to frag shader
+    UV = vertexUV;
+}
